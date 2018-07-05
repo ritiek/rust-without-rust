@@ -25,7 +25,4 @@ setup(name="rust-playground",
       license='MIT',
       download_url="https://github.com/ritiek/rust-without-rust/archive/v" + playground.__version__ + ".tar.gz",
       classifiers=[],
-      install_requires=[
-            'colorama',
-      ]
 )

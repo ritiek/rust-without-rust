@@ -70,17 +70,22 @@ def make_request(json_data):
 
 
 def add_style(text, words):
-    from colorama import init, Fore, Back, Style
+    try:
+        from colorama import init, Fore, Back, Style
+    except ImportError:
+        print("Install the colorama python package to "
+              "enable colored output or pass"
+              "--disable-color to hide this message")
+    else:
+        for word in words:
+            color_word = "{style}{word}{unstyle}".format(
+                style=Style.BRIGHT + Fore.GREEN,
+                word=word,
+                unstyle=Style.RESET_ALL + Fore.RESET)
+            text = text.replace(word, color_word)
 
-    for word in words:
-        color_word = "{style}{color}{word}{uncolor}{unstyle}".format(
-            style=Style.BRIGHT,
-            color=Fore.GREEN,
-            word=word,
-            unstyle=Fore.RESET,
-            uncolor=Style.RESET_ALL)
-        text = text.replace(word, color_word)
-    return text
+    finally:
+        return text
 
 
 def filter_results(results, color=True):
