@@ -1,3 +1,5 @@
+from colorama import init, Fore, Back, Style
+
 import json
 import sys
 import argparse
@@ -34,6 +36,11 @@ def get_arguments(raw_args=None):
                         choices={"ast", "asm", "mir", "llvm-ir", "wasm"},
                         help="build for the target triple")
 
+    parser.add_argument("--disable-color",
+                        default=False,
+                        action="store_true",
+                        help="build for the target triple")
+
     parsed = parser.parse_args(raw_args)
     return parsed
 
@@ -64,9 +71,21 @@ def make_request(json_data):
     return json.loads(response.read())
 
 
-def filter_results(results):
+def add_style(text, words):
+    for word in words:
+        color_word = "{style}{color}{word}{uncolor}{unstyle}".format(
+            style=Style.BRIGHT,
+            color=Fore.GREEN,
+            word=word,
+            unstyle=Fore.RESET,
+            uncolor=Style.RESET_ALL)
+        text = text.replace(word, color_word)
+    return text
+
+
+def filter_results(results, color=True):
     for key, value in results.items():
-        results[key] = str(value).strip()
+        results[key] = str(value).rstrip()
     return results
 
 
@@ -87,8 +106,11 @@ def command_line():
                            target=args.target)
 
     response = make_request(json_data)
-
     results = filter_results(response)
+
+    if not args.disable_color:
+        results["stderr"] = add_style(results["stderr"],
+                                ("Compiling",  "Finished", "Running"))
 
     if "code" in results:
         print(results["code"])
