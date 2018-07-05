@@ -1,5 +1,3 @@
-from colorama import init, Fore, Back, Style
-
 import json
 import sys
 import argparse
@@ -12,7 +10,7 @@ except ImportError:
 
 def get_arguments(raw_args=None):
     parser = argparse.ArgumentParser(
-            description="Use Python to execute simple Rust code"
+            description="Use Python to execute simple Rust code "
                         "by running it on https://play.rust-lang.org/",
             formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
@@ -39,7 +37,7 @@ def get_arguments(raw_args=None):
     parser.add_argument("--disable-color",
                         default=False,
                         action="store_true",
-                        help="build for the target triple")
+                        help="disable colors and styles for stderr")
 
     parsed = parser.parse_args(raw_args)
     return parsed
@@ -72,6 +70,8 @@ def make_request(json_data):
 
 
 def add_style(text, words):
+    from colorama import init, Fore, Back, Style
+
     for word in words:
         color_word = "{style}{color}{word}{uncolor}{unstyle}".format(
             style=Style.BRIGHT,
