@@ -1,6 +1,6 @@
 # rust-without-rust
 
-[![Pypi Version](https://img.shields.io/pypi/v/rust-playground.svg)](hhttps://pypi.org/project/rust-without-rust)
+[![Pypi Version](https://img.shields.io/pypi/v/rust-playground.svg)](https://pypi.org/project/rust-without-rust)
 [![Build Status](https://travis-ci.org/ritiek/rust-without-rust.svg?branch=master)](https://travis-ci.org/ritiek/rust-without-rust)
 
 This is a small tool written in Python which allows you to compile simple
