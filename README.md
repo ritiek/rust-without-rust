@@ -13,7 +13,7 @@ You can install this package from PyPi.
 pip install rust-playground
 ```
 
-You can also clone this repository locally and run setup.py
+You can also clone this repository locally and run setup.py.
 ```
 python setup.py install
 ```
@@ -33,7 +33,7 @@ positional arguments:
 
 optional arguments:
   -h, --help            show this help message and exit
-  --release             build artifacts in release mode,with optimizations
+  --release             build artifacts in release mode, with optimizations
                         (default: False)
   --channel {stable,nightly,beta}
                         set Rust channel (default: stable)

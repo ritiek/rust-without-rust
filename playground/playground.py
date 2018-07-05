@@ -21,7 +21,7 @@ def get_arguments(raw_args=None):
     parser.add_argument("--release",
                         default=False,
                         action="store_true",
-                        help="build artifacts in release mode,"
+                        help="build artifacts in release mode, "
                              "with optimizations")
 
     parser.add_argument("--channel",
