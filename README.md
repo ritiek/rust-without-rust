@@ -73,3 +73,4 @@ and then returns stdout/stderr output on your terminal, which looks very alike t
 
 ## License
 
+[![License](https://img.shields.io/github/license/ritiek/rust-without-rust.svg)](https://github.com/ritiek/rust-without-rust/blob/master/LICENSE)
