@@ -30,7 +30,7 @@ def get_arguments(raw_args=None):
                         help="set Rust channel")
 
     parser.add_argument("--target",
-                        default="asm",
+                        default="ast",
                         choices={"ast", "asm", "mir", "llvm-ir", "wasm"},
                         help="build for the target triple")
 
@@ -38,10 +38,10 @@ def get_arguments(raw_args=None):
     return parsed
 
 
-def parse_json(code, channel="stable", mode="debug", target="ast"):
+def parse_json(code, channel, mode, target):
 
     json_data = { "channel"          : channel,
-                  "code"             : content.decode("utf-8"),
+                  "code"             : code.decode("utf-8"),
                   "crateType"        : "bin",
                   "mode"             : mode,
                   "tests"            : False,

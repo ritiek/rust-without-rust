@@ -7,6 +7,6 @@
 *.pyc
 __pycache__/
 .cache/
-playground.egg-info/
+rust_playground.egg-info/
 build/
 dist/
